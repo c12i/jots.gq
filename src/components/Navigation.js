@@ -23,10 +23,12 @@ const Navigation = () => {
                     </Link>
                 </li>
                 <li>
-                    <span aria-hidden="true" role="img">
-                        ⭐️
-                    </span>
-                    <Link to="/favorites">favorites</Link>
+                    <Link to="/favorites">
+                        <span aria-hidden="true" role="img">
+                            ⭐️
+                        </span>
+                        favorites
+                    </Link>
                 </li>
             </ul>
         </nav>
