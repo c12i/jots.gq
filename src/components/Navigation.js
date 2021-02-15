@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { FaHome, FaBook, FaStar } from 'react-icons/fa'
 
 const Nav = styled.nav`
     padding: 1em;
@@ -41,33 +42,31 @@ const NavList = styled.ul`
     }
 `
 
+const NavLink = styled.span`
+    font-size: 1rem;
+    padding: 0 0 1.2rem 1rem;
+`
+
 const Navigation = () => {
     return (
         <Nav>
             <NavList>
                 <li>
                     <Link to="/">
-                        {' '}
-                        <span aria-hidden="true" role="img">
-                            🏡
-                        </span>{' '}
-                        home
+                        <FaHome />
+                        <NavLink>home</NavLink>
                     </Link>
                 </li>
                 <li>
                     <Link to="/mynotes">
-                        <span aria-hidden="true" role="img">
-                            📝
-                        </span>{' '}
-                        my notes
+                        <FaBook />
+                        <NavLink>my notes</NavLink>
                     </Link>
                 </li>
                 <li>
                     <Link to="/favorites">
-                        <span aria-hidden="true" role="img">
-                            ⭐️
-                        </span>
-                        favorites
+                        <FaStar />
+                        <NavLink>favorites</NavLink>
                     </Link>
                 </li>
             </NavList>
