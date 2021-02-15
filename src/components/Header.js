@@ -24,7 +24,7 @@ const Header = () => {
     return (
         <HeaderBar>
             <img src={logo} alt="logo" height="40" />
-            <LogoText>notedly</LogoText>
+            <LogoText>Jots</LogoText>
         </HeaderBar>
     )
 }
