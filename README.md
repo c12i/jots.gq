@@ -1,6 +1,6 @@
-## notedly-web
+## jots-web
 
-[WIP] React.js web client for notedly
+[WIP] React.js web client for jots
 
 ## Usage
 

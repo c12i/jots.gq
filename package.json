@@ -1,7 +1,7 @@
 {
-    "name": "notedly-web",
+    "name": "jots-web",
     "version": "1.0.0",
-    "description": "[WIP] React.js web client for notedly",
+    "description": "[WIP] React.js web client for jots",
     "main": "src/index.js",
     "scripts": {
         "dev": "parcel src/index.html",
@@ -18,12 +18,12 @@
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/notedly-web.git"
+        "url": "git+https://github.com/jots-web.git"
     },
     "keywords": [],
     "author": "Collins Muriuki <murerwacollins@gmail.com>",
     "license": "MIT",
-    "homepage": "https://github.com/collinsmuriuki/notedly-web#readme",
+    "homepage": "https://github.com/collinsmuriuki/jots-web#readme",
     "dependencies": {
         "@apollo/client": "3.0.0-beta.24",
         "@types/react": "^16.9.17",
