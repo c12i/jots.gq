@@ -1,12 +1,7 @@
 import React from 'react'
-import Button from '../components/Button'
 
 const Home = () => {
-    return (
-        <div>
-            hello from home <Button>Hi</Button>
-        </div>
-    )
+    return <div>hello from home</div>
 }
 
 export default Home
