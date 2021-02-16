@@ -1,16 +1,34 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
+import {
+    ApolloClient,
+    ApolloProvider,
+    InMemoryCache,
+    createHttpLink
+} from '@apollo/client'
+import { setContext } from 'apollo-link-context'
 
 import Pages from './pages'
 import GlobalStyles from './components/GlobalStyles'
 
 const uri = process.env.API_URI
+const httpLink = createHttpLink({ uri })
 const cache = new InMemoryCache()
+
+const authLink = setContext((_, { headers }) => {
+    return {
+        headers: {
+            ...headers,
+            authorization: localStorage.getItem('token') || ''
+        }
+    }
+})
+
 const client = new ApolloClient({
-    uri,
-    cache,
-    connectToDevTools: true
+    link: authLink.concat(httpLink),
+    connectToDevTools: true,
+    resolvers: {},
+    cache
 })
 
 const App = () => (
