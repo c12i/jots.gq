@@ -31,7 +31,7 @@ const SIGN_UP = gql`
     }
 `
 
-const SignUp = props => {
+const SignUp = ({ history }) => {
     const [values, setValues] = useState()
 
     useEffect(() => {
@@ -41,6 +41,7 @@ const SignUp = props => {
     const [signUp, { loading, error }] = useMutation(SIGN_UP, {
         onCompleted: ({ signUp }) => {
             localStorage.setItem('token', signUp)
+            history.push('/')
         },
         onError: err => {
             console.error(err)
