@@ -31,6 +31,13 @@ const client = new ApolloClient({
     cache
 })
 
+const data = {
+    isLoggedIn: !!localStorage.getItem('token')
+}
+
+cache.writeData({ data })
+client.onResetStore(() => client.writeData({ data }))
+
 const App = () => (
     <ApolloProvider client={client}>
         <GlobalStyles />

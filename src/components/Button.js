@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-const Button = styled.button`
+const baseButtonStyles = css`
     display: block;
     padding: 8px;
     border: none;
@@ -19,6 +19,33 @@ const Button = styled.button`
     :active {
         background-color: #005fa3;
     }
+`
+
+const asLinkStyles = css`
+    background: none;
+    color: #0077cc;
+    border: none;
+    padding: 0;
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+
+    :hover,
+    :active {
+        color: #004499;
+    }
+`
+
+const getProps = ({ asLink }) => {
+    if (asLink) {
+        return asLinkStyles
+    } else {
+        return baseButtonStyles
+    }
+}
+
+const Button = styled.button`
+    ${getProps}
 `
 
 export default Button
