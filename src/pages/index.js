@@ -7,6 +7,7 @@ import MyNotes from './mynotes'
 import Favorites from './favorites'
 import NotePage from './note'
 import NotFound from './notfound'
+import SignUp from './signup'
 
 const Pages = () => {
     return (
@@ -17,6 +18,7 @@ const Pages = () => {
                     <Route path="/mynotes" component={MyNotes} />
                     <Route path="/favorites" component={Favorites} />
                     <Route path="/notes/:id" component={NotePage} />
+                    <Route path="/signup" component={SignUp} />
                     <Route component={NotFound} />
                 </Switch>
             </Layout>
