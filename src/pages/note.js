@@ -2,11 +2,7 @@ import React from 'react'
 import { useQuery, gql } from '@apollo/client'
 
 import Note from '../components/Note'
-import styled from 'styled-components'
-
-const Center = styled.p`
-    text-align: center;
-`
+import Center from '../components/Center'
 
 const GET_NOTE = gql`
     query GetNote($id: ID!) {

@@ -1,13 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
 import { useQuery, gql } from '@apollo/client'
 
 import NoteFeed from '../components/NoteFeed'
 import Button from '../components/Button'
-
-const Center = styled.p`
-    text-align: center;
-`
+import Center from '../components/Center'
 
 const GET_NOTES = gql`
     query NoteFeed($cursor: String) {

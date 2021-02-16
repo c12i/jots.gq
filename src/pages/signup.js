@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useMutation, useApolloClient, gql } from '@apollo/client'
 
 import Button from '../components/Button'
+import Center from '../components/Center'
 
 const Wrapper = styled.div`
     border: 1px solid #f5f4f0;
@@ -39,7 +40,10 @@ const SignUp = props => {
 
     const [signUp, { loading, error }] = useMutation(SIGN_UP, {
         onCompleted: ({ signUp }) => {
-            console.log(signUp)
+            localStorage.setItem('token', signUp)
+        },
+        onError: err => {
+            console.error(err)
         }
     })
 
@@ -51,6 +55,7 @@ const SignUp = props => {
     }
     return (
         <Wrapper>
+            {error && <Center danger>Error: Could not sign you up</Center>}
             <Form
                 onSubmit={event => {
                     event.preventDefault()
