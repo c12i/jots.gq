@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { useQuery, gql } from '@apollo/client'
 import { Link, withRouter } from 'react-router-dom'
+import { FaPen } from 'react-icons/fa'
 
-import logo from '../img/logo.svg'
 import Button from '../components/Button'
 
 const IS_LOGGED_IN = gql`
@@ -24,9 +24,9 @@ const HeaderBar = styled.header`
     z-index: 1;
 `
 
-const LogoText = styled.h1`
+const LogoText = styled.h2`
     margin: 0;
-    padding: 0;
+    padding: 0 0 0 0.4em;
     display: inline;
 `
 
@@ -41,7 +41,7 @@ const Header = ({ history }) => {
     } = useQuery(IS_LOGGED_IN)
     return (
         <HeaderBar>
-            <img src={logo} alt="logo" height="40" />
+            <FaPen />
             <LogoText>Jots</LogoText>
             <UserState>
                 {isLoggedIn ? (
