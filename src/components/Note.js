@@ -23,12 +23,16 @@ const UserActions = styled.div`
     margin-left: auto;
 `
 
+const Img = styled.img`
+    border-radius: 50%;
+`
+
 const Note = ({ note }) => {
     return (
         <StyledNote>
             <Metadata>
                 <MetaInfo>
-                    <img
+                    <Img
                         src={note.author.avatar}
                         alt={`${note.author.username} avatar`}
                         height="50px"
