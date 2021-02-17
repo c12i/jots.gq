@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useQuery, gql } from '@apollo/client'
 
 import NoteFeed from '../components/NoteFeed'
@@ -25,6 +25,10 @@ const GET_NOTES = gql`
 `
 
 const Home = () => {
+    useEffect(() => {
+        document.title = 'Home - Jots'
+    })
+
     const { data, loading, error, fetchMore } = useQuery(GET_NOTES)
 
     if (loading) return <Center>Loading...</Center>
