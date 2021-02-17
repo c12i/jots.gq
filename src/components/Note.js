@@ -25,6 +25,8 @@ const UserActions = styled.div`
 
 const Img = styled.img`
     border-radius: 50%;
+    box-shadow: 0 0 0 1px #888888;
+    border-style: none;
 `
 
 const Note = ({ note }) => {
