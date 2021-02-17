@@ -2,7 +2,6 @@ import React from 'react'
 import { useQuery, gql } from '@apollo/client'
 
 import NoteFeed from '../components/NoteFeed'
-import Button from '../components/Button'
 import Center from '../components/Center'
 
 const GET_NOTES = gql`
@@ -54,7 +53,9 @@ const Home = () => {
         <>
             <NoteFeed notes={data.noteFeed.notes} />
             {data.noteFeed.hasNextPage && (
-                <Button onClick={handleFetchMore}>Load more</Button>
+                <Center asLink onClick={handleFetchMore}>
+                    {loading ? 'Loading...' : 'Load More'}
+                </Center>
             )}
         </>
     )

@@ -4,9 +4,26 @@ const dangerStyles = css`
     color: #cf1322;
 `
 
-const getProps = ({ danger }) => {
+const asLinkStyles = css`
+    background: none;
+    color: #0077cc;
+    border: none;
+    padding: 0;
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+
+    :hover,
+    :active {
+        color: #004499;
+    }
+`
+
+const getProps = ({ danger, asLink }) => {
     if (danger) {
         return dangerStyles
+    } else if (asLink) {
+        return asLinkStyles
     }
 }
 
