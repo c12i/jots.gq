@@ -29,6 +29,16 @@ const Img = styled.img`
     border-style: none;
 `
 
+const BoldText = styled.span`
+    font-weight: bold;
+    cursor: pointer;
+
+    :hover,
+    :active {
+        color: #004499;
+    }
+`
+
 const Note = ({ note }) => {
     return (
         <StyledNote>
@@ -42,7 +52,7 @@ const Note = ({ note }) => {
                 </MetaInfo>
                 <MetaInfo>
                     <em>by </em>
-                    {note.author.username} <br />{' '}
+                    <BoldText>{note.author.username}</BoldText> <br />{' '}
                     {format(note.createdAt, 'MMM Do YYYY')}
                 </MetaInfo>
                 <UserActions>
