@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useMutation, useApolloClient, gql } from '@apollo/client'
 
-import Button from '../components/Button'
 import Center from '../components/Center'
+import UserForm from '../components/UserForm'
 
 const Wrapper = styled.div`
     border: 1px solid #f5f4f0;
@@ -49,57 +49,10 @@ const SignUp = ({ history }) => {
             console.error(err)
         }
     })
-
-    const onChange = event => {
-        setValues({
-            ...values,
-            [event.target.name]: event.target.value
-        })
-    }
     return (
         <Wrapper>
             {error && <Center danger>Error: Could not sign you up</Center>}
-            <Form
-                onSubmit={event => {
-                    event.preventDefault()
-                    signUp({
-                        variables: {
-                            input: { ...values }
-                        }
-                    })
-                }}
-            >
-                <label htmlFor="username">Username:</label>
-                <input
-                    required
-                    type="text"
-                    id="username"
-                    name="username"
-                    placeholder="Username"
-                    onChange={onChange}
-                />
-                <label htmlFor="email">Email:</label>
-                <input
-                    required
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Email"
-                    onChange={onChange}
-                />
-                <label htmlFor="password">Password:</label>
-                <input
-                    required
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Password"
-                    onChange={onChange}
-                />
-                <Button type="submit">
-                    {loading ? 'Loading...' : 'Submit'}
-                </Button>
-            </Form>
+            <UserForm formType="signUp" action={signUp} loading={loading} />
         </Wrapper>
     )
 }

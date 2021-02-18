@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useQuery, gql } from '@apollo/client'
-import { Link, withRouter } from 'react-router-dom'
+import { Link as DefaultLink, withRouter } from 'react-router-dom'
 
 import Button from '../components/Button'
 import logo from '../img/logo.png'
@@ -10,6 +10,10 @@ const IS_LOGGED_IN = gql`
     {
         isLoggedIn @client
     }
+`
+
+const Link = styled(DefaultLink)`
+    text-decoration: none;
 `
 
 const HeaderBar = styled.header`
