@@ -14,11 +14,15 @@ const Wrapper = styled.div`
 const Form = styled.form`
     input {
         padding: 0.1em 0 0.1em 0.8em;
-        border: solid #333 1px;
+        border: solid #f5f4f0 1px;
         border-radius: 5px;
 
         ::placeholder {
             opacity: 0.5;
+        }
+
+        ::focus {
+            border: solid #333 1px;
         }
     }
 
