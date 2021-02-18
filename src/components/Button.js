@@ -17,11 +17,11 @@ const baseButtonStyles = css`
     }
 
     :active {
-        background-color: #005fa3;
+        background-color: #333;
     }
 
     &[disabled] {
-        background: #fff;
+        background-color: #fff;
         color: #333;
     }
 `

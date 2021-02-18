@@ -5,12 +5,23 @@ import Button from './Button'
 
 const Wrapper = styled.div`
     border: 1px solid #f5f4f0;
+    border-radius: 5px;
     max-width: 500px;
-    padding: 1em;
+    padding: 1.2em;
     margin: 0 auto;
 `
 
 const Form = styled.form`
+    input {
+        padding: 0.1em 0 0.1em 0.8em;
+        border: solid #333 1px;
+        border-radius: 5px;
+
+        ::placeholder {
+            opacity: 0.5;
+        }
+    }
+
     label,
     input {
         display: block;
@@ -47,7 +58,7 @@ const UserForm = ({ formType, action, loading }) => {
                     type="text"
                     id="username"
                     name="username"
-                    placeholder="username"
+                    placeholder="Username"
                     onChange={onChange}
                 />
                 {formType === 'signUp' && (
