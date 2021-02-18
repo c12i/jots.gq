@@ -8,7 +8,6 @@ import {
 } from 'react-router-dom'
 
 import Layout from '../components/Layout'
-import Center from '../components/Center'
 import Home from './home'
 import MyNotes from './mynotes'
 import Favorites from './favorites'
@@ -43,13 +42,8 @@ const Pages = () => {
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
     const {
-        data: { isLoggedIn },
-        loading,
-        error
+        data: { isLoggedIn }
     } = useQuery(IS_LOGGED_IN)
-
-    if (loading) return <Center>Loading...</Center>
-    if (error) return <Center>Error: Something went wrong</Center>
 
     return (
         <Route
