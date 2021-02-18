@@ -32,8 +32,6 @@ const SIGN_UP = gql`
 `
 
 const SignUp = ({ history }) => {
-    const [values, setValues] = useState()
-
     useEffect(() => {
         document.title = 'Sign Up - Jots'
     })
