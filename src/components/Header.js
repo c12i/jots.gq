@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { useQuery, gql } from '@apollo/client'
 import { Link, withRouter } from 'react-router-dom'
-import { FaPen } from 'react-icons/fa'
 
 import Button from '../components/Button'
+import logo from '../img/logo.png'
 
 const IS_LOGGED_IN = gql`
     {
@@ -24,7 +24,7 @@ const HeaderBar = styled.header`
     z-index: 1;
 `
 
-const LogoText = styled.h2`
+const LogoText = styled.h1`
     margin: 0;
     padding: 0 0 0 0.4em;
     display: inline;
@@ -34,6 +34,10 @@ const UserState = styled.div`
     margin-left: auto;
 `
 
+const Img = styled.img`
+    height: 50px;
+`
+
 const Header = ({ history }) => {
     const {
         data: { isLoggedIn },
@@ -41,7 +45,7 @@ const Header = ({ history }) => {
     } = useQuery(IS_LOGGED_IN)
     return (
         <HeaderBar>
-            <FaPen />
+            <Img src={logo} alt="logo" />
             <LogoText>Jots</LogoText>
             <UserState>
                 {isLoggedIn ? (
