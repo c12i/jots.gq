@@ -19,6 +19,11 @@ const baseButtonStyles = css`
     :active {
         background-color: #005fa3;
     }
+
+    &[disabled] {
+        background: #fff;
+        color: #333;
+    }
 `
 
 const asLinkStyles = css`
