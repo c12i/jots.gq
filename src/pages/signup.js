@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useMutation, useApolloClient, gql } from '@apollo/client'
 
@@ -48,10 +48,10 @@ const SignUp = ({ history }) => {
         }
     })
     return (
-        <Wrapper>
+        <>
             {error && <Center danger>Error: Could not sign you up</Center>}
             <UserForm formType="signUp" action={signUp} loading={loading} />
-        </Wrapper>
+        </>
     )
 }
 
