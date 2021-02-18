@@ -1,7 +1,14 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { useQuery, gql } from '@apollo/client'
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch,
+    Redirect
+} from 'react-router-dom'
 
 import Layout from '../components/Layout'
+import Center from '../components/Center'
 import Home from './home'
 import MyNotes from './mynotes'
 import Favorites from './favorites'
@@ -10,14 +17,20 @@ import NotFound from './notfound'
 import SignUp from './signup'
 import SignIn from './signin'
 
+const IS_LOGGED_IN = gql`
+    {
+        isLoggedIn @client
+    }
+`
+
 const Pages = () => {
     return (
         <Router>
             <Layout>
                 <Switch>
                     <Route exact path="/" component={Home} />
-                    <Route path="/mynotes" component={MyNotes} />
-                    <Route path="/favorites" component={Favorites} />
+                    <PrivateRoute path="/mynotes" component={MyNotes} />
+                    <PrivateRoute path="/favorites" component={Favorites} />
                     <Route path="/notes/:id" component={NotePage} />
                     <Route path="/signup" component={SignUp} />
                     <Route path="/signin" component={SignIn} />
@@ -25,6 +38,35 @@ const Pages = () => {
                 </Switch>
             </Layout>
         </Router>
+    )
+}
+
+const PrivateRoute = ({ component: Component, ...rest }) => {
+    const {
+        data: { isLoggedIn },
+        loading,
+        error
+    } = useQuery(IS_LOGGED_IN)
+
+    if (loading) return <Center>Loading...</Center>
+    if (error) return <Center>Error: Something went wrong</Center>
+
+    return (
+        <Route
+            {...rest}
+            render={props =>
+                isLoggedIn ? (
+                    <Component {...props} />
+                ) : (
+                    <Redirect
+                        to={{
+                            pathname: '/signin',
+                            state: { from: props.location }
+                        }}
+                    />
+                )
+            }
+        />
     )
 }
 
