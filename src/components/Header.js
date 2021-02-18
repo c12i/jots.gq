@@ -35,7 +35,7 @@ const UserState = styled.div`
 `
 
 const Img = styled.img`
-    height: 50px;
+    height: 40px;
 `
 
 const Header = ({ history }) => {
