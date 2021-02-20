@@ -1,35 +1,16 @@
 import React, { useEffect } from 'react'
-import { useQuery, gql } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 
 import NoteFeed from '../components/NoteFeed'
 import Center from '../components/Center'
-
-const GET_NOTES = gql`
-    query NoteFeed($cursor: String) {
-        noteFeed(cursor: $cursor) {
-            cursor
-            hasNextPage
-            notes {
-                id
-                createdAt
-                content
-                favoriteCount
-                author {
-                    id
-                    username
-                    avatar
-                }
-            }
-        }
-    }
-`
+import { NOTE_FEED } from '../gql/query'
 
 const Home = () => {
     useEffect(() => {
         document.title = 'Home - Jots'
     })
 
-    const { data, loading, error, fetchMore } = useQuery(GET_NOTES)
+    const { data, loading, error, fetchMore } = useQuery(NOTE_FEED)
 
     if (loading) return <Center>Loading...</Center>
     if (error) return <Center>Error: {error.name}</Center>

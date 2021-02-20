@@ -1,35 +1,10 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { useMutation, useApolloClient, gql } from '@apollo/client'
+import { useMutation, useApolloClient } from '@apollo/client'
 
 import Center from '../components/Center'
 import UserForm from '../components/UserForm'
-
-const Wrapper = styled.div`
-    border: 1px solid #f5f4f0;
-    max-width: 500px;
-    padding: 1em;
-    margin: 0 auto;
-`
-
-const Form = styled.form`
-    label,
-    input {
-        display: block;
-        line-height: 2em;
-    }
-
-    input {
-        width: 100%;
-        margin-bottom: 1em;
-    }
-`
-
-const SIGN_UP = gql`
-    mutation SignUp($input: SignUpInput!) {
-        signUp(input: $input)
-    }
-`
+import { SIGN_UP } from '../gql/mutation'
 
 const SignUp = ({ history }) => {
     useEffect(() => {

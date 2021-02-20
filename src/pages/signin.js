@@ -1,14 +1,9 @@
 import React, { useEffect } from 'react'
-import { useApolloClient, useMutation, gql } from '@apollo/client'
+import { useApolloClient, useMutation } from '@apollo/client'
 
 import UserForm from '../components/UserForm'
 import Center from '../components/Center'
-
-const SIGN_IN_USER = gql`
-    mutation($input: SignInInput!) {
-        signIn(input: $input)
-    }
-`
+import { SIGN_IN } from '../gql/mutation'
 
 const SignIn = ({ history }) => {
     useEffect(() => {
@@ -16,7 +11,7 @@ const SignIn = ({ history }) => {
     })
 
     const client = useApolloClient()
-    const [signIn, { loading, error }] = useMutation(SIGN_IN_USER, {
+    const [signIn, { loading, error }] = useMutation(SIGN_IN, {
         onCompleted: data => {
             localStorage.setItem('token', data.signIn)
             client.writeData({ data: { isLoggedIn: true } })
