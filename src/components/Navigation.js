@@ -1,14 +1,10 @@
 import React from 'react'
-import { useQuery, gql } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { FaHome, FaBook, FaStar, FaPlus } from 'react-icons/fa'
 
-const IS_LOGGED_IN = gql`
-    {
-        isLoggedIn @client
-    }
-`
+import { IS_LOGGED_IN } from '../gql/query'
 
 const Nav = styled.nav`
     padding: 1em;
