@@ -1,7 +1,14 @@
 import React from 'react'
+import { useQuery, gql } from '@apollo/client'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { FaHome, FaBook, FaStar } from 'react-icons/fa'
+import { FaHome, FaBook, FaStar, FaPlus } from 'react-icons/fa'
+
+const IS_LOGGED_IN = gql`
+    {
+        isLoggedIn @client
+    }
+`
 
 const Nav = styled.nav`
     padding: 1em;
@@ -48,6 +55,9 @@ const NavLink = styled.span`
 `
 
 const Navigation = () => {
+    const {
+        data: { isLoggedIn }
+    } = useQuery(IS_LOGGED_IN)
     return (
         <Nav>
             <NavList>
@@ -69,6 +79,14 @@ const Navigation = () => {
                         <NavLink>favorites</NavLink>
                     </Link>
                 </li>
+                {isLoggedIn && (
+                    <li>
+                        <Link to="/new">
+                            <FaPlus />
+                            <NavLink>new note</NavLink>
+                        </Link>
+                    </li>
+                )}
             </NavList>
         </Nav>
     )
