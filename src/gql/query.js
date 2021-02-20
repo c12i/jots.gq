@@ -99,4 +99,23 @@ const USER_NOTES = gql`
     }
 `
 
-export { IS_LOGGED_IN, GET_NOTE, NOTE_FEED, MY_NOTES, MY_FAVORITES, USER_NOTES }
+const GET_ME = gql`
+    query Me {
+        me {
+            id
+            favorites {
+                id
+            }
+        }
+    }
+`
+
+export {
+    IS_LOGGED_IN,
+    GET_NOTE,
+    NOTE_FEED,
+    MY_NOTES,
+    MY_FAVORITES,
+    USER_NOTES,
+    GET_ME
+}
