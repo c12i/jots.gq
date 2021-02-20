@@ -5,6 +5,7 @@ import { useQuery, gql } from '@apollo/client'
 import { Link as DefaultLink } from 'react-router-dom'
 
 import Center from '../components/Center'
+import DeleteNote from '../components/DeleteNote'
 import { GET_ME } from '../gql/query'
 
 const Link = styled(DefaultLink)`
@@ -30,9 +31,13 @@ const UserNote = ({ note, isLoggedIn }) => {
             {note.favoriteCount}
             <br />
             {data.me.id === note.author.id && (
-                <Link to={`/edit/${note.id}`}>
-                    <FaEdit />
-                </Link>
+                <>
+                    <Link to={`/edit/${note.id}`}>
+                        <FaEdit />
+                    </Link>
+                    <br />
+                    <DeleteNote noteId={note.id} />
+                </>
             )}
         </>
     )

@@ -3,6 +3,7 @@ import { useApolloClient, useMutation } from '@apollo/client'
 
 import UserForm from '../components/UserForm'
 import Center from '../components/Center'
+import { GET_ME } from '../gql/query'
 import { SIGN_IN } from '../gql/mutation'
 
 const SignIn = ({ history }) => {
@@ -16,7 +17,8 @@ const SignIn = ({ history }) => {
             localStorage.setItem('token', data.signIn)
             client.writeData({ data: { isLoggedIn: true } })
             history.push('/')
-        }
+        },
+        refetchQueries: [{ query: GET_ME }]
     })
 
     return (

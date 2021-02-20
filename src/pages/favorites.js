@@ -12,7 +12,7 @@ const Favorites = () => {
     const { data, loading, error } = useQuery(MY_FAVORITES)
 
     if (loading) return <Center>Loading...</Center>
-    if (error) return <Center danger>Error: Something went wrong</Center>
+    if (error) return <Center danger>Error: {error.message}</Center>
 
     return (
         <>

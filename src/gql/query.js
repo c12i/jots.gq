@@ -45,6 +45,7 @@ const NOTE_FEED = gql`
 const MY_NOTES = gql`
     query MyNotes {
         me {
+            id
             username
             notes {
                 id
@@ -64,6 +65,7 @@ const MY_NOTES = gql`
 const MY_FAVORITES = gql`
     query MyFavorites {
         me {
+            id
             username
             favorites {
                 id
@@ -83,6 +85,7 @@ const MY_FAVORITES = gql`
 const USER_NOTES = gql`
     query UserNotes($username: String!) {
         user(username: $username) {
+            id
             username
             notes {
                 id

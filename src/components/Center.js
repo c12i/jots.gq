@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 const dangerStyles = css`
-    color: #cf1322;
+    color: #f5222d;
 `
 
 const asLinkStyles = css`

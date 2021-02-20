@@ -18,8 +18,7 @@ const EditNote = ({ match, history }) => {
     })
 
     if (loading) return <Center>Loading...</Center>
-
-    if (error) return <Center>Error! {error.name}</Center>
+    if (error) return <Center danger>Error! {error.name}</Center>
 
     return <NoteForm content={data.note.content} action={updateNote} />
 }
