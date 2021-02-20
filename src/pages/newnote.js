@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client'
 import NoteForm from '../components/NoteForm'
 import Center from '../components/Center'
 import { CREATE_NOTE } from '../gql/mutation'
+import { NOTE_FEED } from '../gql/query'
 
 const NewNote = ({ history }) => {
     useEffect(() => {
@@ -13,7 +14,8 @@ const NewNote = ({ history }) => {
     const [newNote, { loading, error }] = useMutation(CREATE_NOTE, {
         onCompleted: ({ createNote }) => {
             history.push(`/notes/${createNote.id}`)
-        }
+        },
+        refetchQueries: [{ query: NOTE_FEED }]
     })
 
     return (
