@@ -56,8 +56,9 @@ const Header = ({ history }) => {
                     <Button
                         onClick={() => {
                             localStorage.removeItem('token')
-                            client.resetStore()
-                            client.writeData({ data: { isLoggedIn: false } })
+                            client.writeData({
+                                data: { isLoggedIn: !isLoggedIn }
+                            })
                             history.push('/')
                         }}
                         asLink
