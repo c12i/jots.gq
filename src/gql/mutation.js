@@ -58,4 +58,22 @@ const DELETE_NOTE = gql`
     }
 `
 
-export { SIGN_IN, SIGN_UP, CREATE_NOTE, UPDATE_NOTE, DELETE_NOTE }
+const TOGGLE_FAVORITE = gql`
+    mutation ToggleFavorite($id: ID!) {
+        toggleFavorite(id: $id) {
+            favoritedBy {
+                username
+            }
+            favoriteCount
+        }
+    }
+`
+
+export {
+    SIGN_IN,
+    SIGN_UP,
+    CREATE_NOTE,
+    UPDATE_NOTE,
+    DELETE_NOTE,
+    TOGGLE_FAVORITE
+}

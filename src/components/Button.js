@@ -34,6 +34,7 @@ const asLinkStyles = css`
     font: inherit;
     text-decoration: none;
     cursor: pointer;
+    font-weight: 500;
 
     :hover,
     :active {
