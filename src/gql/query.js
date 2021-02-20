@@ -80,4 +80,23 @@ const MY_FAVORITES = gql`
     }
 `
 
-export { IS_LOGGED_IN, GET_NOTE, NOTE_FEED, MY_NOTES, MY_FAVORITES }
+const USER_NOTES = gql`
+    query UserNotes($username: String!) {
+        user(username: $username) {
+            username
+            notes {
+                id
+                content
+                favoriteCount
+                createdAt
+                author {
+                    id
+                    username
+                    avatar
+                }
+            }
+        }
+    }
+`
+
+export { IS_LOGGED_IN, GET_NOTE, NOTE_FEED, MY_NOTES, MY_FAVORITES, USER_NOTES }

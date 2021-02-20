@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import styled from 'styled-components'
 import { format } from 'date-fns'
@@ -29,9 +30,10 @@ const Img = styled.img`
     border-style: none;
 `
 
-const BoldText = styled.span`
+const BoldLink = styled(Link)`
     font-weight: bold;
     cursor: pointer;
+    text-decoration: none;
 
     :hover,
     :active {
@@ -52,8 +54,10 @@ const Note = ({ note }) => {
                 </MetaInfo>
                 <MetaInfo>
                     <em>by </em>
-                    <BoldText>{note.author.username}</BoldText> <br />{' '}
-                    {format(note.createdAt, 'MMM Do YYYY')}
+                    <BoldLink to={`/users/${note.author.username}`}>
+                        {note.author.username}
+                    </BoldLink>{' '}
+                    <br /> {format(note.createdAt, 'MMM Do YYYY')}
                 </MetaInfo>
                 <UserActions>
                     <em>Favorites: </em>
