@@ -57,7 +57,9 @@ const Header = ({ history }) => {
                         onClick={() => {
                             localStorage.removeItem('token')
                             client.writeData({
-                                data: { isLoggedIn: !isLoggedIn }
+                                data: {
+                                    isLoggedIn: !!localStorage.getItem('token')
+                                }
                             })
                             history.push('/')
                         }}
