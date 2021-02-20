@@ -42,4 +42,42 @@ const NOTE_FEED = gql`
     }
 `
 
-export { IS_LOGGED_IN, GET_NOTE, NOTE_FEED }
+const MY_NOTES = gql`
+    query MyNotes {
+        me {
+            username
+            notes {
+                id
+                content
+                favoriteCount
+                createdAt
+                author {
+                    id
+                    username
+                    avatar
+                }
+            }
+        }
+    }
+`
+
+const MY_FAVORITES = gql`
+    query MyFavorites {
+        me {
+            username
+            favorites {
+                id
+                content
+                favoriteCount
+                createdAt
+                author {
+                    id
+                    username
+                    avatar
+                }
+            }
+        }
+    }
+`
+
+export { IS_LOGGED_IN, GET_NOTE, NOTE_FEED, MY_NOTES, MY_FAVORITES }
