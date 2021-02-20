@@ -10,7 +10,12 @@ import { DELETE_NOTE } from '../gql/mutation'
 
 const Trash = styled(FaTrashAlt)`
     color: #f5222d;
+`
+
+const Wrapper = styled.div`
+    color: #f5222d;
     cursor: pointer;
+    font-weight: bold;
 
     :hover {
         color: #cf1322;
@@ -27,11 +32,13 @@ const DeleteNote = ({ noteId, history }) => {
     if (error) return <Center danger>Error! {error.name}</Center>
 
     return (
-        <Trash
+        <Wrapper
             onClick={() => {
                 deleteNote({ variables: { id: noteId } })
             }}
-        />
+        >
+            <Trash /> <em>Delete</em>
+        </Wrapper>
     )
 }
 

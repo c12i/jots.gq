@@ -33,7 +33,7 @@ const UserNote = ({ note, isLoggedIn }) => {
             {data.me.id === note.author.id && (
                 <>
                     <Link to={`/edit/${note.id}`}>
-                        <FaEdit />
+                        <FaEdit /> <em>Edit</em>
                     </Link>
                     <br />
                     <DeleteNote noteId={note.id} />
