@@ -14,7 +14,7 @@ const SignUp = ({ history }) => {
     const client = useApolloClient()
     const [signUp, { loading, error }] = useMutation(SIGN_UP, {
         onCompleted: ({ signUp }) => {
-            localStorage.setItem('token', signUp)
+            localStorage.setItem('token', signUp.token)
             client.writeData({ data: { isLoggedIn: true } })
             history.push('/')
         },
