@@ -13,9 +13,10 @@ const Form = styled.form`
 
 const TextArea = styled.textarea`
     width: 100%;
-    height: 90%;
+    height: 50%;
     padding: 1em;
     border: 1px solid #f5f4f0;
+    overflow-y: scroll;
 
     ::placeholder {
         opacity: 0.5;
@@ -23,6 +24,11 @@ const TextArea = styled.textarea`
 
     ::focus {
         border: solid #333 1px;
+    }
+
+    @media (min-width: 700px) {
+        height: 90%;
+        overflow-y: scroll;
     }
 `
 

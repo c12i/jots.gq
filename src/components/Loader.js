@@ -8,14 +8,18 @@ const Loader = styled.div`
     border-right-color: #888;
     border-radius: 22px;
     -webkit-animation: rotate 1s infinite linear;
-    position: absolute;
-    left: 50%;
-    top: 30%;
+    margin: 0 auto;
 
     @keyframes rotate {
         100% {
             -webkit-transform: rotate(360deg);
         }
+    }
+
+    @media (min-width: 700px) {
+        position: absolute;
+        left: 50%;
+        top: 30%;
     }
 `
 
