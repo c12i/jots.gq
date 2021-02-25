@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client'
 
 import NoteFeed from '../components/NoteFeed'
 import Center from '../components/Center'
+import Loader from '../components/Loader'
 import { MY_FAVORITES } from '../gql/query'
 
 const Favorites = () => {
@@ -11,7 +12,7 @@ const Favorites = () => {
     })
     const { data, loading, error } = useQuery(MY_FAVORITES)
 
-    if (loading) return <Center>Loading...</Center>
+    if (loading) return <Loader />
     if (error) return <Center danger>Error: {error.message}</Center>
 
     return (

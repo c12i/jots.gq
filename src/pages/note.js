@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client'
 
 import Note from '../components/Note'
 import Center from '../components/Center'
+import Loader from '../components/Loader'
 import { GET_NOTE } from '../gql/query'
 
 const NotePage = ({ match }) => {
@@ -10,7 +11,7 @@ const NotePage = ({ match }) => {
 
     const { data, loading, error } = useQuery(GET_NOTE, { variables: { id } })
 
-    if (loading) return <Center>Loading...</Center>
+    if (loading) return <Loader />
 
     if (error) return <Center>Error! {error.name}</Center>
 

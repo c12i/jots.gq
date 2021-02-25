@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client'
 
 import NoteFeed from '../components/NoteFeed'
 import Center from '../components/Center'
+import Loader from '../components/Loader'
 import { USER_NOTES } from '../gql/query'
 
 const UserNotes = ({ match }) => {
@@ -10,7 +11,7 @@ const UserNotes = ({ match }) => {
         variables: { username: match.params.username }
     })
 
-    if (loading) return <Center>Loading...</Center>
+    if (loading) return <Loader />
     if (error) return <Center danger>Error: Something went wrong</Center>
 
     return (

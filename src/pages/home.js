@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client'
 
 import NoteFeed from '../components/NoteFeed'
 import Center from '../components/Center'
+import Loader from '../components/Loader'
 import { NOTE_FEED } from '../gql/query'
 
 const Home = () => {
@@ -12,7 +13,7 @@ const Home = () => {
 
     const { data, loading, error, fetchMore } = useQuery(NOTE_FEED)
 
-    if (loading) return <Center>Loading...</Center>
+    if (loading) return <Loader />
     if (error) return <Center>Error: {error.name}</Center>
 
     const handleFetchMore = () => {
