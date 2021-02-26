@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import { useMutation } from '@apollo/client'
+import React, { useState, useEffect } from 'react'
+import { useMutation, useQuery } from '@apollo/client'
 import { FaStar } from 'react-icons/fa'
 
 import Button from '../components/Button'
 import { TOGGLE_FAVORITE } from '../gql/mutation'
-import { NOTE_FEED, MY_FAVORITES } from '../gql/query'
+import { NOTE_FEED, MY_FAVORITES, GET_ME } from '../gql/query'
 
 const FavoriteNote = ({ me, favoriteCount, noteId }) => {
     const [count, setCount] = useState(favoriteCount)
@@ -12,10 +12,16 @@ const FavoriteNote = ({ me, favoriteCount, noteId }) => {
         me.favorites.some(note => note.id === noteId)
     )
 
+    const { data } = useQuery(GET_ME)
+
     const [toggleFavorite] = useMutation(TOGGLE_FAVORITE, {
         variables: { id: noteId },
         refetchQueries: [{ query: NOTE_FEED }, { query: MY_FAVORITES }]
     })
+
+    useEffect(() => {
+        setFavorited(data.me.favorites.some(note => note.id === noteId))
+    }, [])
 
     return (
         <>
