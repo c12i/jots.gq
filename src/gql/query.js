@@ -6,6 +6,12 @@ const IS_LOGGED_IN = gql`
     }
 `
 
+const CURRENT_USER = gql`
+    {
+        currentUser @client
+    }
+`
+
 const GET_NOTE = gql`
     query GetNote($id: ID!) {
         note(id: $id) {
@@ -115,6 +121,7 @@ const GET_ME = gql`
 
 export {
     IS_LOGGED_IN,
+    CURRENT_USER,
     GET_NOTE,
     NOTE_FEED,
     MY_NOTES,

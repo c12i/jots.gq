@@ -1,5 +1,17 @@
 import { gql } from '@apollo/client'
 
+const SET_CURRENT_USER = gql`
+    mutation SetCurrentUser($user: User!) {
+        setCurrentUser(user: $user) @client
+    }
+`
+
+const RESET_CURRENT_USER = gql`
+    mutation ResetCurrentUser {
+        resetCurrentUser @client
+    }
+`
+
 const SIGN_IN = gql`
     mutation SignIn($input: SignInInput!) {
         signIn(input: $input) {
@@ -86,6 +98,8 @@ const TOGGLE_FAVORITE = gql`
 `
 
 export {
+    SET_CURRENT_USER,
+    RESET_CURRENT_USER,
     SIGN_IN,
     SIGN_UP,
     CREATE_NOTE,

@@ -1,8 +1,8 @@
-import { CURRENT_USER } from './query'
+import { CURRENT_USER, IS_LOGGED_IN } from './query'
 
 const resolvers = {
     Mutation: {
-        setCurrentUser(_parent, { user, isLoggedIn }, { cache }) {
+        setCurrentUser(_parent, { user }, { cache }) {
             const { currentUser } = cache.readQuery({
                 query: CURRENT_USER
             })
@@ -10,8 +10,14 @@ const resolvers = {
             cache.writeQuery({
                 query: CURRENT_USER,
                 data: {
-                    currentUser: user,
-                    isLoggedIn
+                    currentUser: user
+                }
+            })
+
+            cache.writeQuery({
+                query: IS_LOGGED_IN,
+                data: {
+                    isLoggedIn: true
                 }
             })
 
@@ -26,8 +32,14 @@ const resolvers = {
             cache.writeQuery({
                 query: CURRENT_USER,
                 data: {
-                    currentUser: null,
-                    isLoggedIn: !!localStorage.getItem('token')
+                    currentUser: null
+                }
+            })
+
+            cache.writeQuery({
+                query: IS_LOGGED_IN,
+                data: {
+                    isLoggedIn: false
                 }
             })
 
