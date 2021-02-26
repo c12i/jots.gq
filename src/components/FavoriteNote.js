@@ -20,8 +20,10 @@ const FavoriteNote = ({ me, favoriteCount, noteId }) => {
     })
 
     useEffect(() => {
-        setFavorited(data.me.favorites.some(note => note.id === noteId))
-    }, [])
+        if (data) {
+            setFavorited(data.me.favorites.some(note => note.id === noteId))
+        }
+    }, [localStorage.getItem('token')])
 
     return (
         <>
