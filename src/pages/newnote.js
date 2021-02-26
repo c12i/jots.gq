@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useMutation } from '@apollo/client'
 
 import NoteForm from '../components/NoteForm'
-import Center from '../components/Center'
+import Loader from '../components/Loader'
 import { CREATE_NOTE } from '../gql/mutation'
 import { NOTE_FEED, MY_NOTES } from '../gql/query'
 
@@ -20,7 +20,7 @@ const NewNote = ({ history }) => {
 
     return (
         <>
-            {loading && <Center>Loading...</Center>}
+            {loading && <Loader center small />}
             {error && <Center danger>Error: Something went wrong!</Center>}
             <NoteForm action={newNote} loading={loading} />
         </>

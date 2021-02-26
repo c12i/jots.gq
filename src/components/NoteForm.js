@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Button from './Button'
 
 const Wrapper = styled.div`
+    padding-top: 5px;
     height: 100%;
 `
 
